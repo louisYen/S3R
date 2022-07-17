@@ -183,7 +183,7 @@ Example:
 $ ln -sT <downloaded-dictionary-path>/ dictionary
 ```
 
-### Generate dictionaries
+### (Optional) Generate dictionaries
 To generate dictionaries for the shanghaitech and ucf-crime dataset, please run the following commands:
 
 ```bash=
