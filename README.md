@@ -37,11 +37,14 @@ $ conda activate s3r
 $ conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
 $ cd S3R/
 $ pip install -r requirements.txt
+
 # please refer to the "Data preparation" section
 $ ln -sT <your-data-path>/SH_Train_ten_crop_i3d data/shanghaitech/i3d/train
 $ ln -sT <your-data-path>/SH_Test_ten_crop_i3d data/shanghaitech/i3d/test
+
 # please refer to the "Dictionary learning" section
 $ ln -sT <downloaded-dictionary-path>/ dictionary
+
 # please refer to the "Evaluation" section
 $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
 --dataset shanghaitech --inference --resume checkpoint/shanghaitech_s3r_i3d_best.pth
