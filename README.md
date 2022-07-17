@@ -25,11 +25,11 @@ This repo is the official implementation of "**Self-Supervised Sparse Representa
 
 ![](https://i.imgur.com/w5vt2Sx.png)
 
-## Introduction
+## <a name="0"></a> Introduction
 
-We consider establishing a dictionary learning approach to model the concept of *anomaly* at the feature level. The dictionary learning presumes an overcomplete basis, and prefers a sparse representation to succinctly explain a given sample. With the training set $\mathcal{X}$, whose video samples are anomaly-free, we are motivated to learn its corresponding dictionary $D$ of $N$ atoms. Since the derivation of $D$ is specific to the training dataset $\mathcal{X}$, we will use the notation $D_T$ to emphasize that the underlying dictionary is *task-specific*. With the learned task-specific dictionary $D_T$, we can design two opposite network components: the ***en-Normal*** and ***de-Normal*** modules. Given a snippet-level feature $F$, the former is used to obtain its reconstructed normal-event feature, while, on the contrary, the latter is applied to filter out the normal-event feature. The two modules complement each other and are central to our approach to anomaly video detection. 
+We consider establishing a dictionary learning approach to model the concept of *anomaly* at the feature level. The dictionary learning presumes an overcomplete basis, and prefers a sparse representation to succinctly explain a given sample. With the training set $\mathcal{X}$, whose video samples are anomaly-free, we are motivated to learn its corresponding dictionary $D$ of $N$ atoms. Since the derivation of $D$ is specific to the training dataset $\mathcal{X}$, we will use the notation $D_T$ to emphasize that the underlying dictionary is *task-specific*. With the learned task-specific dictionary $D_T$, we can design two opposite network components: the ***en-Normal*** and ***de-Normal*** modules. Given a snippet-level feature $F$, the former is used to obtain its reconstructed normal-event feature, while, on the contrary, the latter is applied to filter out the normal-event feature. The two modules complement each other and are central to our approach to anomaly video detection.
 
-## Quick start
+## <a name="1"></a> Quick start
 ```bash=
 # please refer to the "Installation" section
 $ conda create --name s3r python=3.6 -y
@@ -47,7 +47,8 @@ $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
 --dataset shanghaitech --inference --resume checkpoint/shanghaitech_s3r_i3d_best.pth
 ```
 
-## Prerequisites
+
+## <a name="2"></a> Prerequisites
 - <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="30" height="30"/> </a> Operating system
     - Ubuntu 18.04.6 LTS
 - <a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" alt="pytorch" width="30" height="30"/> </a> Graphics card
@@ -92,7 +93,7 @@ S3R/
 ├─ utils.py
 ```   
 
-## Installation
+## <a name="3"></a> Installation
 
 **Step 1.** Create a conda environment and activate it.
 ```shell=
@@ -112,7 +113,8 @@ $ pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.py
 $ pip install -r requirements.txt
 ```
 
-## Data preparation
+
+## <a name="4"></a> Data preparation
 
 Please download the extracted I3d features for shanghaitech and ucf-crime dataset from the [link](https://github.com/tianyu0207/RTFM).
 
@@ -157,7 +159,7 @@ $ ln -sT <your-data-path>/SH_Test_ten_crop_i3d data/shanghaitech/i3d/test
 $ ln -sT <your-data-path>/UCF_Train_ten_crop_i3d data/ucf-crime/i3d/train
 $ ln -sT <your-data-path>/UCF_Test_ten_crop_i3d data/ucf-crime/i3d/test
 ```
-## Dictionary learning
+## <a name="5"></a> Dictionary learning
 The dictionaries can be downloaded from the [link](https://drive.google.com/drive/folders/1roEdnWUyCPQeur84I1X08JZSgZCYuQKK?usp=sharing) and the file structure of dictionaries should look like:
 ```bash
 $ tree dictionary
@@ -177,7 +179,7 @@ Example:
 $ ln -sT <downloaded-dictionary-path>/ dictionary
 ```
 
-## Generate dictionaries
+### Generate dictionaries
 To generate dictionaries for the shanghaitech and ucf-crime dataset, please run the following commands:
 
 ```bash=
@@ -189,14 +191,17 @@ $ python data/ucf-crime/ucf_crime_dictionary_learning.py
 ```
 
 
-## Results and Models
+## <a name="6"></a> Results and Models
 
 |      config     |    dataset   | backbone | gpus | AUC (%) |                                             ckpt                                            |                                            log                                            |
 |:---------------:|:------------:|:--------:|:----:|:-------:|:-------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|
 | shanghaitech_dl | shanghaitech |    [I3D](https://github.com/Tushar-N/pytorch-resnet3d)   |   1  |  97.40  | [model](https://drive.google.com/file/d/1f4KaRtwDzq3h9vR--nQRbRpXsraEkJ97/view?usp=sharing) | [log](https://drive.google.com/file/d/1E9TNC7hitKaoT3UH2hYWiEvI-yKJuzWf/view?usp=sharing) |
 |   ucf_crime_dl  |   ucf-crime  |    [I3D](https://github.com/Tushar-N/pytorch-resnet3d)   |   1  |  85.99  | [model](https://drive.google.com/file/d/1b6_WSkJAsaDQDVJJlxL2PxvkmBd7Gc9p/view?usp=sharing) | [log](https://drive.google.com/file/d/13vQzR9b9mnvW48s5LQcEJleMcMY0inTB/view?usp=sharing) |
 
-## Evaluation
+
+
+
+## <a name="7"></a> Evaluation
 To evaluate the S3R on **shanghaitech**, please run the following command:
 ```bash=
 $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
@@ -221,7 +226,8 @@ $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
 +-----------+--------+---------+---------+
 ```
 
-## Training
+
+## <a name="8"></a> Training
 
 ### shaghaitech dataset
 To train the S3R from scratch on **shanghaitech**, please run the following command:
@@ -249,10 +255,11 @@ $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
 --dataset ucf-crime --version s3r-vad-0.1 --evaluate_min_step 10
 ```
 
-## Acknowledgement
+
+## <a name="9"></a> Acknowledgement
 Our codebase is built based on [RTFM](https://github.com/tianyu0207/RTFM). We really appreciate the authors for the nicely organized code!
 
-## Citation
+## <a name="10"></a> Citation
 We hope the codebase is beneficial to you. If this repo works positively for your research, please consider citing our paper. Thank you for your time and consideration.
 ```
 @inproceedings{WuHCFL22,
