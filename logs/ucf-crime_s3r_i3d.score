@@ -1,0 +1,257 @@
+
+**********
+!!python/object:anomaly.apis.opts.S3RArgumentParser
+descr:
+- S3R
+- video
+- anomaly
+- detection
+version: vad-ws-0.2
+lr: 0.001
+quantize_size: 32
+model_name: s3r
+checkpoint_path: !!python/object/apply:pathlib.PosixPath
+- checkpoint
+dictionary_path: !!python/object/apply:pathlib.PosixPath
+- dictionary
+feature_size: 2048
+evaluate_min_step: 10
+report_k: 10
+max_epoch: 15000
+backbone: i3d
+evaluate_freq: 1
+resume: null
+gpus: 1
+seed: -1
+inference: false
+plot_freq: 10
+workers: 0
+dropout: 0.7
+log_path: !!python/object/apply:pathlib.PosixPath
+- logs
+root_path: !!python/object/apply:pathlib.PosixPath
+- data
+debug: false
+dataset: ucf-crime
+batch_size: 32
+
+
+
+PyTorch version: 1.6.0
+Is debug build: No
+CUDA used to build PyTorch: 10.1
+
+OS: Ubuntu 18.04.6 LTS
+GCC version: (Ubuntu 5.5.0-12ubuntu1) 5.5.0 20171010
+CMake version: version 3.16.3
+
+Python version: 3.6
+Is CUDA available: Yes
+CUDA runtime version: 10.1.243
+GPU models and configuration: 
+GPU 0: NVIDIA GeForce RTX 2080 Ti
+GPU 1: NVIDIA GeForce RTX 2080 Ti
+
+Nvidia driver version: 470.103.01
+cuDNN version: /usr/lib/x86_64-linux-gnu/libcudnn.so.7.6.5
+
+Versions of relevant libraries:
+[pip3] numpy==1.19.2
+[pip3] torch==1.6.0
+[conda] blas                      1.0                         mkl  
+[conda] cudatoolkit               10.1.243             h6bb024c_0  
+[conda] mkl                       2020.2                      256  
+[conda] mkl-service               2.3.0            py36he8ac12f_0  
+[conda] mkl_fft                   1.3.0            py36h54f3939_0  
+[conda] mkl_random                1.1.1            py36h0573a6f_0  
+[conda] numpy                     1.19.2           py36h54aff64_0  
+[conda] numpy-base                1.19.2           py36hfa32c7d_0  
+[conda] pytorch                   1.6.0           py3.6_cuda10.1.243_cudnn7.6.3_0    pytorch
+**********
+
+==========
+S3R(
+  (video_embedding): Sequential(
+    (0): Aggregate(
+      (conv_1): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (conv_2): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))
+        (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (conv_3): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,))
+        (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (conv_4): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(1,), stride=(1,), bias=False)
+        (1): ReLU()
+      )
+      (conv_5): Sequential(
+        (0): Conv1d(2048, 2048, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+        (1): GroupNorm(8, 2048, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (non_local): NonLocalBlock1D(
+        (value): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+        (alter): Sequential(
+          (0): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+          (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (query): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+        (key): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+      )
+    )
+    (1): Dropout(p=0.7, inplace=False)
+  )
+  (macro_embedding): Sequential(
+    (0): Aggregate(
+      (conv_1): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (conv_2): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))
+        (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (conv_3): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,))
+        (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (conv_4): Sequential(
+        (0): Conv1d(2048, 512, kernel_size=(1,), stride=(1,), bias=False)
+        (1): ReLU()
+      )
+      (conv_5): Sequential(
+        (0): Conv1d(2048, 2048, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+        (1): GroupNorm(8, 2048, eps=1e-05, affine=True)
+        (2): ReLU()
+      )
+      (non_local): NonLocalBlock1D(
+        (value): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+        (alter): Sequential(
+          (0): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+          (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (query): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+        (key): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+      )
+    )
+    (1): Dropout(p=0.7, inplace=False)
+  )
+  (en_normal): enNormal(
+    (en_normal_module): enNormalModule(
+      (query_embedding): Linear(in_features=2048, out_features=512, bias=True)
+      (cache_embedding): Linear(in_features=2048, out_features=512, bias=True)
+      (value_embedding): Linear(in_features=2048, out_features=2048, bias=True)
+    )
+  )
+  (de_normal): deNormal(
+    (channel_attention): ChannelAttention(
+      (channel_gate): ChannelGate(
+        (mlp): Sequential(
+          (0): Flatten()
+          (1): Linear(in_features=2048, out_features=128, bias=True)
+          (2): ReLU()
+          (3): Linear(in_features=128, out_features=2048, bias=True)
+        )
+      )
+    )
+  )
+  (video_projection): Sequential(
+    (0): Conv1d(2048, 2048, kernel_size=(3,), stride=(1,), padding=(1,))
+    (1): GroupNorm(8, 2048, eps=1e-05, affine=True)
+    (2): ReLU()
+  )
+  (macro_projection): Sequential(
+    (0): Conv1d(2048, 2048, kernel_size=(3,), stride=(1,), padding=(1,))
+    (1): GroupNorm(8, 2048, eps=1e-05, affine=True)
+    (2): ReLU()
+  )
+  (video_classifier): Sequential(
+    (0): Linear(in_features=2048, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Dropout(p=0.7, inplace=False)
+    (3): Linear(in_features=512, out_features=128, bias=True)
+    (4): ReLU()
+    (5): Dropout(p=0.7, inplace=False)
+    (6): Linear(in_features=128, out_features=1, bias=True)
+    (7): Sigmoid()
+  )
+  (macro_classifier): GlobalStatistics(
+    (flat): Flatten()
+    (mlp): Sequential(
+      (0): Linear(in_features=2048, out_features=512, bias=True)
+      (1): ReLU()
+      (2): Dropout(p=0.7, inplace=False)
+      (3): Linear(in_features=512, out_features=128, bias=True)
+      (4): ReLU()
+      (5): Dropout(p=0.7, inplace=False)
+      (6): Linear(in_features=128, out_features=1, bias=True)
+    )
+  )
+  (drop_out): Dropout(p=0.7, inplace=False)
+)
+==========
+
+
+    [1m[35mVideo Anomaly Detection[0m
+        - dataset:	 [4m[1m[37mucf-crime[0m
+        - version:	 vad-ws-0.2
+        - description:	 [1m[32mS3R video anomaly detection[0m
+        - initial AUC score: 43.402 %
+        - initial learning rate: 0.0010
+    
++-------------------------------------------------------------------------------------------------------+
+|  Step  |   AUC    |  Training loss  |          Elapsed time          |              Now               |
+---------------------------------------------------------------------------------------------------------
+|   11   |  60.563  |      1.847      |         0:02:25.234683         |      2022-07-06 14:10:58       | 
+|   12   |  63.036  |      1.803      |         0:02:47.178872         |      2022-07-06 14:11:20       | 
+|   13   |  66.282  |      1.818      |         0:03:17.182761         |      2022-07-06 14:11:50       | 
+|   14   |  69.290  |      1.831      |         0:03:52.384378         |      2022-07-06 14:12:25       | 
+|   15   |  71.569  |      1.816      |         0:04:19.742447         |      2022-07-06 14:12:52       | 
+|   16   |  71.726  |      1.780      |         0:04:53.823076         |      2022-07-06 14:13:27       | 
+|   25   |  72.647  |      1.755      |         0:10:53.272501         |      2022-07-06 14:19:26       | 
+|   26   |  73.840  |      1.719      |         0:11:24.412741         |      2022-07-06 14:19:57       | 
+|   27   |  74.537  |      1.681      |         0:11:49.959312         |      2022-07-06 14:20:23       | 
+|   28   |  74.960  |      1.686      |         0:12:15.055509         |      2022-07-06 14:20:48       | 
+|   29   |  75.122  |      1.646      |         0:12:44.218784         |      2022-07-06 14:21:17       | 
+|   31   |  75.451  |      1.611      |         0:13:52.935771         |      2022-07-06 14:22:26       | 
+|   32   |  76.059  |      1.528      |         0:14:28.065080         |      2022-07-06 14:23:01       | 
+|   33   |  77.044  |      1.495      |         0:14:54.184786         |      2022-07-06 14:23:27       | 
+|   34   |  78.120  |      1.493      |         0:15:24.661538         |      2022-07-06 14:23:57       | 
+|   35   |  78.614  |      1.383      |         0:15:55.836888         |      2022-07-06 14:24:29       | 
+|   37   |  79.603  |      1.176      |         0:17:07.600838         |      2022-07-06 14:25:40       | 
+|   38   |  80.143  |      1.218      |         0:17:32.499405         |      2022-07-06 14:26:05       | 
+|   41   |  80.322  |      1.165      |         0:18:58.870996         |      2022-07-06 14:27:32       | 
+|   48   |  80.337  |      1.230      |         0:23:20.682554         |      2022-07-06 14:31:53       | 
+|   54   |  80.771  |      0.968      |         0:25:40.208024         |      2022-07-06 14:34:13       | 
+|   59   |  81.176  |      1.084      |         0:28:50.435038         |      2022-07-06 14:37:23       | 
+|   75   |  82.019  |      0.801      |         0:37:58.632291         |      2022-07-06 14:46:31       | 
+|   85   |  82.122  |      0.943      |         0:42:50.156467         |      2022-07-06 14:51:23       | 
+|  204   |  82.359  |      0.715      |         1:46:27.104988         |      2022-07-06 15:55:00       | 
+|  324   |  82.668  |      0.651      |         2:49:22.510431         |      2022-07-06 16:57:55       | 
+|  495   |  82.775  |      0.417      |         4:21:08.025886         |      2022-07-06 18:29:41       | 
+|  499   |  82.875  |      0.640      |         4:23:20.780447         |      2022-07-06 18:31:53       | 
+|  548   |  82.961  |      0.595      |         4:49:33.457842         |      2022-07-06 18:58:06       | 
+|  561   |  82.964  |      0.463      |         4:55:51.662075         |      2022-07-06 19:04:24       | 
+|  593   |  83.382  |      0.447      |         5:13:33.147303         |      2022-07-06 19:22:06       | 
+|  728   |  83.505  |      0.452      |         6:23:44.093006         |      2022-07-06 20:32:17       | 
+|  844   |  83.580  |      0.448      |         7:24:48.335081         |      2022-07-06 21:33:21       | 
+|  920   |  83.980  |      0.411      |         8:03:11.602768         |      2022-07-06 22:11:44       | 
+|  1100  |  84.036  |      0.511      |         9:36:58.865187         |      2022-07-06 23:45:32       | 
+|  1115  |  84.173  |      0.457      |         9:43:28.198562         |      2022-07-06 23:52:01       | 
+|  1306  |  84.224  |      0.344      |        11:22:52.388350         |      2022-07-07 01:31:25       | 
+|  1792  |  84.326  |      0.332      |        15:25:21.061279         |      2022-07-07 05:33:54       | 
+|  1799  |  84.504  |      0.383      |        15:29:07.151406         |      2022-07-07 05:37:40       | 
+|  2466  |  84.958  |      0.346      |        21:09:37.409583         |      2022-07-07 11:18:10       | 
+|  2930  |  85.328  |      0.373      |     1 day, 1:00:01.928991      |      2022-07-07 15:08:35       | 
+|  2935  |  85.989  |      0.553      |     1 day, 1:02:03.063862      |      2022-07-07 15:10:36       | 

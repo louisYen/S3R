@@ -1,0 +1,10 @@
+pyyaml
+tqdm
+munch
+terminaltables
+scikit-learn
+opencv-python
+pandas
+termcolor
+typed-argument-parser
+einops
