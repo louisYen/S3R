@@ -21,7 +21,7 @@ This repo is the official implementation of "**Self-Supervised Sparse Representa
     <a href="#10">10. Citation</a><br>
   </tr>
 </table>
-https://upload.wikimedia.org/wikipedia/commons/3/35/Information_icon.svg
+
 
 ![](https://i.imgur.com/w5vt2Sx.png)
 
