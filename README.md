@@ -1,6 +1,6 @@
 # Self-Supervised Sparse Representation for Video Anomaly Detection
 
-![](https://i.imgur.com/bezMeKt.png | width=20px) By Jhih-Ciang Wu, He-Yen Hsieh, Ding-Jie Chen, Chiou-Shann Fuh, and Tyng-Luh Liu
+![](https://i.imgur.com/bezMeKt.png|width=20px) By Jhih-Ciang Wu, He-Yen Hsieh, Ding-Jie Chen, Chiou-Shann Fuh, and Tyng-Luh Liu
 
 
 This repo is the official implementation of "**Self-Supervised Sparse Representation for Video Anomaly Detection**" (accepted at ECCV'22) for the weakly-supervised VAD (wVAD) setting.
