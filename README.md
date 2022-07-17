@@ -195,8 +195,8 @@ $ python data/ucf-crime/ucf_crime_dictionary_learning.py
 
 |      config     |    dataset   | backbone | gpus | AUC (%) |                                             ckpt                                            |                                            log                                            |
 |:---------------:|:------------:|:--------:|:----:|:-------:|:-------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|
-| [shanghaitech_dl](/configs/shanghaitech/shanghaitech_dl.py) | shanghaitech |    [I3D](https://github.com/Tushar-N/pytorch-resnet3d)   |   1  |  97.40  | [model](https://drive.google.com/file/d/1f4KaRtwDzq3h9vR--nQRbRpXsraEkJ97/view?usp=sharing) | [log](https://drive.google.com/file/d/1E9TNC7hitKaoT3UH2hYWiEvI-yKJuzWf/view?usp=sharing) |
-|   [ucf_crime_dl](/configs/ucf_crime/ucf_crime_dl.py)  |   ucf-crime  |    [I3D](https://github.com/Tushar-N/pytorch-resnet3d)   |   1  |  85.99  | [model](https://drive.google.com/file/d/1b6_WSkJAsaDQDVJJlxL2PxvkmBd7Gc9p/view?usp=sharing) | [log](https://drive.google.com/file/d/13vQzR9b9mnvW48s5LQcEJleMcMY0inTB/view?usp=sharing) |
+| [shanghaitech_dl](/configs/shanghaitech/shanghaitech_dl.py) | shanghaitech |    [I3D](https://github.com/Tushar-N/pytorch-resnet3d)   |   1  |  97.40  | [model](https://drive.google.com/file/d/1f4KaRtwDzq3h9vR--nQRbRpXsraEkJ97/view?usp=sharing) | [log](/logs/shanghaitech_s3r_i3d.score) |
+|   [ucf_crime_dl](/configs/ucf_crime/ucf_crime_dl.py)  |   ucf-crime  |    [I3D](https://github.com/Tushar-N/pytorch-resnet3d)   |   1  |  85.99  | [model](https://drive.google.com/file/d/1b6_WSkJAsaDQDVJJlxL2PxvkmBd7Gc9p/view?usp=sharing) | [log](/logs/ucf-crime_s3r_i3d.score) |
 
 
 
