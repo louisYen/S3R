@@ -67,7 +67,7 @@ $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
 
 The following information denotes the versions of installed libraries in our experiments.
 
-- <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Book.svg" alt="python" width="30" height="30"/> </a> Library versions
+- <a href="https://pypi.org" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Book.svg" alt="python" width="30" height="30"/> </a> Library versions
     - pyyaml==6.0
     - tqdm==4.64.0
     - munch==2.5.0
