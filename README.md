@@ -2,7 +2,7 @@
 
 <img src="https://i.imgur.com/bezMeKt.png" alt="Logo" width="25" height="25"/> x <a href="https://homepage.iis.sinica.edu.tw/~liutyng/" target="_blank" rel="noreferrer"> <img src="https://i.imgur.com/3W9vtBl.png" alt="Logo" width="25" height="25"/></a> By Jhih-Ciang Wu\*, He-Yen Hsieh\*, Ding-Jie Chen, Chiou-Shann Fuh, and Tyng-Luh Liu (The symbol of \* denotes equal contribution)
 
-###### tags: `video anomaly detection` `weakly-supervised`
+###### tags: `video anomaly detection` `weakly-supervised` `dictionary learning`
 
 This repo is the official implementation of "**Self-Supervised Sparse Representation for Video Anomaly Detection**" (accepted at ECCV'22) for the weakly-supervised VAD (wVAD) setting.
 
