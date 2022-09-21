@@ -234,7 +234,7 @@ $ CUDA_VISIBLE_DEVICES=0 python tools/trainval_anomaly_detector.py \
 
 ## <a name="8"></a> Training
 
-### shaghaitech dataset
+### shanghaitech dataset
 To train the S3R from scratch on **shanghaitech**, please run the following command:
 ```bash=
 $ CUDA_VISIBLE_DEVICES=<gpu-id> python tools/trainval_anomaly_detector.py \
